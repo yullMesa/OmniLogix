@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061718">
+    <title>Panel de control | OmniLogix</title>
+
+    <!-- Fuentes y estilos exclusivos del dashboard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="../assets/js/dashboard.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+
+        <!-- BARRA LATERAL: navegación de la aplicación -->
+        <aside class="sidebar" id="sidebar" aria-label="Menú principal">
+            <a class="brand" href="#inicio" aria-label="OmniLogix, inicio">
+                <span class="brand-symbol" aria-hidden="true">∞</span>
+                <span>Omni<span class="accent">Logix</span></span>
+            </a>
+
+            <nav class="sidebar-nav" aria-label="Secciones de OmniLogix">
+                <a class="nav-link is-active" href="#inicio" data-view="inicio" aria-current="page">
+                    <span class="nav-icon" aria-hidden="true">⌂</span>Inicio
+                </a>
+                <a class="nav-link" href="#flotas" data-view="flotas"><span class="nav-icon" aria-hidden="true">▱</span>Flotas</a>
+                <a class="nav-link" href="#inventarios" data-view="inventarios"><span class="nav-icon" aria-hidden="true">⬡</span>Inventarios</a>
+                <a class="nav-link" href="#contratos" data-view="contratos"><span class="nav-icon" aria-hidden="true">▤</span>Contratos</a>
+                <a class="nav-link" href="#cumplimiento" data-view="cumplimiento"><span class="nav-icon" aria-hidden="true">◇</span>Cumplimiento</a>
+                <a class="nav-link" href="#reportes" data-view="reportes"><span class="nav-icon" aria-hidden="true">▥</span>Reportes</a>
+                <a class="nav-link" href="#configuracion" data-view="configuracion"><span class="nav-icon" aria-hidden="true">⚙</span>Configuración</a>
+            </nav>
+
+            <!-- Datos de perfil de demostración; conectar al backend más adelante -->
+            <div class="sidebar-footer">
+                <div class="avatar" aria-hidden="true">U</div>
+                <div class="profile-info">
+                    <strong>Mi cuenta</strong>
+                    <span>Panel de operaciones</span>
+                </div>
+                <button class="profile-menu" type="button" aria-label="Opciones de cuenta" title="Opciones disponibles próximamente">···</button>
+            </div>
+        </aside>
+
+        <!-- BOTÓN para abrir el menú en móvil -->
+        <button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Cerrar menú" hidden></button>
+
+        <!-- CONTENIDO de la SPA: aquí se cargarán los módulos futuros -->
+        <div class="main-column">
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">☰</button>
+                <span class="topbar-label">OmniLogix <span aria-hidden="true">/</span> <strong id="breadcrumb">Inicio</strong></span>
+                <span class="topbar-status"><span class="status-dot"></span> Plataforma en desarrollo</span>
+            </header>
+
+            <main class="main-content" id="mainContent" tabindex="-1">
+                <!-- Esta sección se actualizará sin recargar la página -->
+                <section class="welcome" aria-labelledby="viewTitle">
+                    <div class="welcome-icon" aria-hidden="true">∞</div>
+                    <p class="eyebrow">BIENVENIDO A OMNILOGIX</p>
+                    <h1 id="viewTitle">El futuro de tu logística <span class="accent">comienza aquí.</span></h1>
+                    <p class="welcome-description" id="viewDescription">
+                        Estamos construyendo un espacio para conectar y gestionar tus flotas,
+                        inventarios, contratos y operaciones desde un solo lugar.
+                    </p>
+                    <div class="future-notice" role="status">
+                        <span class="notice-dot" aria-hidden="true"></span>
+                        <span id="viewNotice">Próximamente encontrarás aquí tus herramientas de gestión logística.</span>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

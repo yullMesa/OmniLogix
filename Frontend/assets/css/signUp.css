@@ -1,0 +1,348 @@
+/* ================================================================
+   OMNILOGIX — REGISTRO | CSS COMPLETO
+   Archivo: Frontend/assets/css/signup.css
+   HTML esperado: <body class="signup-body"> y las clases signup-*
+
+   EDITA ESTOS VALORES EN :root SI QUIERES CAMBIAR EL DISEÑO:
+   --signup-max-width   ancho máximo de toda la página
+   --signup-left-size   proporción de la columna con la imagen
+   --signup-right-size  proporción de la columna del formulario
+   ================================================================ */
+
+/* 01. VARIABLES */
+:root {
+    --signup-bg: #061617;
+    --signup-card: #091e1e;
+    --signup-input: #071a1a;
+    --signup-green: #baff36;
+    --signup-white: #f6f8f8;
+    --signup-muted: #c6d4d0;
+    --signup-border: #31524b;
+    --signup-max-width: 1300px;
+    --signup-left-size: 1fr;
+    --signup-right-size: 1.13fr;
+    --signup-gap: 26px;
+}
+
+/* 02. REINICIO Y BASE: solo afecta la página de registro */
+.signup-body,
+.signup-body *,
+.signup-body *::before,
+.signup-body *::after {
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body.signup-body {
+    min-width: 320px;
+    margin: 0;
+    color: var(--signup-white);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    background: radial-gradient(ellipse at 85% 12%, #123227, transparent 36%), var(--signup-bg);
+}
+
+.signup-body a { color: inherit; text-decoration: none; }
+.signup-body button,
+.signup-body input,
+.signup-body select { font: inherit; }
+.signup-body img { max-width: 100%; }
+
+/* 03. DOS COLUMNAS: imagen a la izquierda, formulario a la derecha */
+.signup-body .signup-page {
+    min-height: 100vh;
+    padding: 30px 24px 52px;
+    display: block;
+}
+
+.signup-body .signup-layout {
+    width: min(100%, var(--signup-max-width));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns:
+        minmax(0, var(--signup-left-size))
+        minmax(0, var(--signup-right-size));
+    gap: var(--signup-gap);
+    align-items: stretch; /* Las dos tarjetas tienen la misma altura */
+}
+
+.signup-body .signup-left,
+.signup-body .signup-right { min-width: 0; }
+
+/* 04. TARJETA IZQUIERDA: IMAGEN LLENA TODA LA ALTURA */
+/* La tarjeta de la izquierda ocupa exactamente la altura de la derecha.
+   La imagen se estira a ambas dimensiones para rellenarla por completo.
+   Si prefieres conservar la proporción original, cambia object-fit a contain;
+   eso volverá a dejar espacio libre cuando el formulario sea muy alto. */
+.signup-body .signup-left {
+    position: relative;
+    min-width: 0;
+    min-height: 100%;
+    display: block;
+    align-self: stretch;
+    overflow: hidden;
+    border: 1px solid var(--signup-border);
+    border-radius: 20px;
+    background: var(--signup-bg);
+}
+
+.signup-body .signup-left-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: fill; /* LLENA el alto y ancho, sin recortar letras. */
+}
+
+/* 05. TARJETA DERECHA */
+.signup-body .signup-right { display: flex; }
+
+.signup-body .signup-card {
+    width: 100%;
+    min-width: 0;
+    padding: clamp(22px, 2.8vw, 38px);
+    background: rgba(7, 25, 24, .97);
+    border: 1px solid var(--signup-border);
+    border-radius: 20px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .18);
+}
+
+.signup-body .signup-tag {
+    margin: 0 0 10px;
+    color: var(--signup-green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .19em;
+}
+
+.signup-body .signup-card h1 {
+    margin: 0 0 12px;
+    color: var(--signup-white);
+    font-size: clamp(29px, 3vw, 43px);
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: 1.13;
+}
+
+.signup-body .signup-subtitle {
+    margin: 0 0 25px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--signup-muted);
+}
+
+/* 06. FORMULARIO Y SECCIONES */
+.signup-body .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+.signup-body .form-section {
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--signup-border);
+}
+
+.signup-body .form-section h2 {
+    margin: 0 0 15px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--signup-white);
+    font-weight: 750;
+}
+
+.signup-body .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-width: 0;
+}
+
+.signup-body .form-grid.two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.signup-body .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 7px;
+}
+
+.signup-body .form-group label {
+    color: var(--signup-white);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+/* 07. INPUTS Y SELECTS */
+.signup-body .form-group input,
+.signup-body .form-group select {
+    width: 100%;
+    min-width: 0;
+    height: 45px;
+    padding: 0 12px;
+    border: 1px solid var(--signup-border);
+    border-radius: 10px;
+    background: var(--signup-input);
+    color: var(--signup-white);
+    font-size: 12px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.signup-body .form-group input::placeholder { color: #98aca7; opacity: 1; }
+.signup-body .form-group select { cursor: pointer; color-scheme: dark; }
+.signup-body .form-group select option { background: #092121; }
+
+.signup-body .form-group input:focus,
+.signup-body .form-group select:focus {
+    border-color: var(--signup-green);
+    box-shadow: 0 0 0 3px rgba(186, 255, 54, .11);
+}
+
+/* 08. SOLUCIONES DE INTERÉS */
+.signup-body .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.signup-body .checkbox-item {
+    min-width: 0;
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--signup-border);
+    border-radius: 10px;
+    background: var(--signup-input);
+    color: var(--signup-white);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.signup-body .checkbox-item input,
+.signup-body .terms-check input {
+    accent-color: var(--signup-green);
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* 09. TÉRMINOS Y BOTONES */
+.signup-body .terms-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--signup-muted);
+    cursor: pointer;
+}
+
+.signup-body .terms-check input { margin-top: 2px; }
+
+.signup-body .form-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.signup-body .btn-primary,
+.signup-body .btn-secondary {
+    min-width: 0;
+    min-height: 46px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 750;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.signup-body .btn-primary {
+    color: #071617;
+    background: var(--signup-green);
+    border: 1px solid var(--signup-green);
+}
+
+.signup-body .btn-secondary {
+    color: var(--signup-white);
+    background: transparent;
+    border: 1px solid #829e4b;
+}
+
+.signup-body .btn-primary:hover,
+.signup-body .btn-secondary:hover { transform: translateY(-2px); }
+
+.signup-body :is(a, button, input, select):focus-visible {
+    outline: 2px solid var(--signup-green);
+    outline-offset: 3px;
+}
+
+/* 10. PANTALLAS MEDIANAS: las dos tarjetas conservan buen ancho */
+@media (max-width: 1080px) {
+    .signup-body .signup-layout {
+        grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+        gap: 18px;
+    }
+
+    .signup-body .signup-card { padding: 24px 20px; }
+}
+
+/* 11. TABLET: imagen arriba y formulario debajo */
+@media (max-width: 850px) {
+    .signup-body .signup-page { padding: 18px 16px 40px; }
+
+    .signup-body .signup-layout {
+        max-width: 680px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    /* En tablet ya no hay otra columna que determine la altura.
+       Este valor crea una tarjeta vertical proporcionada. */
+    .signup-body .signup-left {
+        min-height: 0;
+        height: min(110vw, 760px);
+    }
+
+    .signup-body .signup-left-image {
+        height: 100%;
+        object-fit: fill;
+    }
+}
+
+/* 12. CELULAR: campos y botones en una sola columna */
+@media (max-width: 540px) {
+    .signup-body .signup-page { padding: 12px 12px 30px; }
+    .signup-body .signup-layout { gap: 14px; }
+    .signup-body .signup-left,
+    .signup-body .signup-card { border-radius: 15px; }
+    .signup-body .signup-left { height: 115vw; }
+    .signup-body .signup-card { padding: 22px 16px; }
+    .signup-body .signup-card h1 { font-size: 31px; }
+    .signup-body .form-grid.two-columns,
+    .signup-body .checkbox-grid,
+    .signup-body .form-buttons { grid-template-columns: minmax(0, 1fr); }
+    .signup-body .signup-form { gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .signup-body *, .signup-body *::before, .signup-body *::after {
+        transition-duration: 0.01ms !important;
+    }
+}

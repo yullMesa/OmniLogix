@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071617">
+    <title>Iniciar sesión | OmniLogix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body class="login-page">
+    <main class="login-layout" aria-labelledby="login-title">
+
+        <!-- IZQUIERDA: MISMA IMAGEN QUE UTILIZA EL REGISTRO -->
+        <section class="login-illustration" aria-label="Presentación de OmniLogix">
+            <img src="../assets/img/formulario_login.png" alt="OmniLogix: plataforma para una gestión logística inteligente">
+        </section>
+
+        <!-- DERECHA: FORMULARIO DE INICIO DE SESIÓN -->
+        <section class="login-panel">
+            <a class="brand" href="../index.html" aria-label="Volver al inicio de OmniLogix">
+                <span class="brand-icon" aria-hidden="true">∞</span>
+                <span>Omni<span class="green">Logix</span></span>
+            </a>
+
+            <div class="login-content">
+                <p class="eyebrow">BIENVENIDO DE NUEVO</p>
+                <h1 id="login-title">Inicia <span class="green">sesión</span></h1>
+                <p class="login-description">Accede a tu cuenta para gestionar tus operaciones logísticas.</p>
+
+                <!-- Preparado para conectar a tu backend Java; reemplaza action cuando exista la ruta real. -->
+                <form id="loginForm" action="#" method="post">
+                    <div class="field">
+                        <label for="identifier">Correo electrónico o nombre de usuario</label>
+                        <input type="text" id="identifier" name="identifier" placeholder="Correo o usuario" autocomplete="username" required>
+                    </div>
+
+                    <div class="field">
+                        <div class="password-heading">
+                            <label for="password">Contraseña</label>
+                        </div>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+                            <button class="password-toggle" type="button" id="togglePassword" aria-controls="password" aria-pressed="false">Mostrar</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-submit">Iniciar sesión <span aria-hidden="true">→</span></button>
+                </form>
+                <p class="signup-link">¿Aún no tienes cuenta? <a href="signUp.html">Regístrate</a></p>
+            </div>
+            <p class="login-footnote">© 2026 OmniLogix</p>
+        </section>
+    </main>
+
+    <script>
+        // Muestra/oculta la contraseña sin alterar su valor.
+        const toggle = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        toggle.addEventListener('click', () => {
+            const visible = password.type === 'text';
+            password.type = visible ? 'password' : 'text';
+            toggle.textContent = visible ? 'Mostrar' : 'Ocultar';
+            toggle.setAttribute('aria-pressed', String(!visible));
+        });
+
+        // Evita simular un inicio de sesión hasta conectar el backend.
+        document.getElementById('loginForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Formulario visual listo. Falta conectar el inicio de sesión al backend.');
+        });
+    </script>
+</body>
+</html>

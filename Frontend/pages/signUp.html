@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | OmniLogix</title>
+    <link rel="stylesheet" href="../assets/css/signUp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="signup-body">
+
+<main class="signup-page">
+    <section class="signup-layout container">
+
+        <!-- CONTENEDOR IZQUIERDO -->
+        <div class="signup-left">
+            <img src="../assets/img/formulario.png" alt="Presentación OmniLogix" class="signup-left-image">
+        </div>
+
+        <!-- CONTENEDOR DERECHO -->
+        <div class="signup-right">
+            <div class="signup-card">
+                <p class="signup-tag">REGISTRO</p>
+                <h1>Crea tu cuenta</h1>
+                <p class="signup-subtitle">
+                    Completa el formulario para centralizar tu operación logística
+                    con OmniLogix.
+                </p>
+
+                <form class="signup-form">
+
+                    <!-- INFORMACIÓN PERSONAL -->
+                    <div class="form-section">
+                        <h2>Información personal</h2>
+
+                        <div class="form-grid two-columns">
+                            <div class="form-group">
+                                <label for="nombre">Nombre completo</label>
+                                <input type="text" id="nombre" placeholder="Ej. Laura Gómez">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cargo">Cargo</label>
+                                <input type="text" id="cargo" placeholder="Ej. Gerente de operaciones">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="correo">Correo corporativo</label>
+                                <input type="email" id="correo" placeholder="tu@empresa.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" placeholder="+57 300 123 4567">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INFORMACIÓN DE LA EMPRESA -->
+                    <div class="form-section">
+                        <h2>Información de la empresa</h2>
+
+                        <div class="form-grid two-columns">
+                            <div class="form-group">
+                                <label for="empresa">Nombre de la empresa</label>
+                                <input type="text" id="empresa" placeholder="Ej. Transportes del Norte S.A.S.">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nit">NIT o identificación tributaria</label>
+                                <input type="text" id="nit" placeholder="Ej. 900123456-7">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sector">Sector o industria</label>
+                                <select id="sector">
+                                    <option value="">Selecciona una opción</option>
+                                    <option>Logística</option>
+                                    <option>Transporte</option>
+                                    <option>Retail</option>
+                                    <option>Manufactura</option>
+                                    <option>E-commerce</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tamano">Tamaño de empresa</label>
+                                <select id="tamano">
+                                    <option value="">Selecciona una opción</option>
+                                    <option>1 - 10 empleados</option>
+                                    <option>11 - 50 empleados</option>
+                                    <option>51 - 200 empleados</option>
+                                    <option>Más de 200 empleados</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pais">País</label>
+                                <input type="text" id="pais" placeholder="Colombia">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ciudad">Ciudad</label>
+                                <input type="text" id="ciudad" placeholder="Ej. Medellín">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INFORMACIÓN OPERATIVA -->
+                    <div class="form-section">
+                        <h2>Información operativa</h2>
+
+                        <div class="form-grid two-columns">
+                            <div class="form-group">
+                                <label for="flota">Número de vehículos o flota</label>
+                                <input type="number" id="flota" placeholder="Ej. 50">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bodegas">Número de bodegas</label>
+                                <input type="number" id="bodegas" placeholder="Ej. 5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOLUCIONES -->
+                    <div class="form-section">
+                        <h2>Soluciones de interés</h2>
+
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item">
+                                <input type="checkbox"> Gestión de flotas
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox"> Inventarios
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox"> Contratos
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox"> Cumplimiento
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox"> Reportes
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SEGURIDAD -->
+                    <div class="form-section">
+                        <h2>Seguridad de la cuenta</h2>
+
+                        <div class="form-grid two-columns">
+                            <div class="form-group">
+                                <label for="password">Crear contraseña</label>
+                                <input type="password" id="password" placeholder="Mínimo 8 caracteres">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirmar contraseña</label>
+                                <input type="password" id="confirmPassword" placeholder="Confirma tu contraseña">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="terms-check">
+                        <input type="checkbox">
+                        <span>Acepto los Términos y Condiciones y la Política de Privacidad.</span>
+                    </label>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-primary">Crear cuenta</button>
+                        <a href="login.html" class="btn-secondary">Iniciar sesión</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+</body>
+</html>
