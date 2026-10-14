@@ -1,9 +1,6 @@
 /* =========================================================
-OMNILOGIX — ESTILOS ORGANIZADOS
-Para ajustar la mujer busca: .hero-woman
-Para ajustar la imagen de bodega busca: .warehouse-card
+OMNILOGIX — ESTILOS OPTIMIZADOS
 ========================================================= */
-
 /* 1. PALETA DE COLORES Y BASE */
 :root {
     --bg: #071617;
@@ -51,9 +48,9 @@ img { max-width: 100%; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--green); color: #071617; }
 .button-outline { border: 1px solid #729739; }
-.button-small { padding: 10px 17px; font-size: 11px; }
+.button-small { padding: 10px 17px; font-size: 12px; }
 
-/* 2. CABECERA */
+/* 2. CABECERA (Navbar corregido con tipografía legible) */
 .site-header { border-bottom: 1px solid #203432; }
 .header-inner {
     min-height: 81px;
@@ -76,8 +73,13 @@ img { max-width: 100%; }
     line-height: .8;
     margin-right: 7px;
 }
-.main-nav { display: flex; gap: 19px; margin-left: auto; }
-.main-nav a { font-size: 11px; }
+.main-nav { display: flex; gap: 24px; margin-left: auto; }
+.main-nav a {
+    font-size: 13px; /* Letra mejorada y perfectamente legible */
+    font-weight: 500;
+    color: #d3dedd;
+    transition: color 0.2s;
+}
 .main-nav a:hover { color: var(--green); }
 .header-actions { display: flex; gap: 9px; }
 .menu-button {
@@ -136,7 +138,7 @@ img { max-width: 100%; }
     color: var(--soft-text);
 }
 
-/* 4. PERSONAJE Y TABLERO */
+/* 4. PERSONAJE Y PANEL DE BIENVENIDA (Dashboard Inicial Limpio) */
 .hero-visual { position: relative; height: 415px; min-width: 0; }
 .dashboard {
     position: absolute;
@@ -148,76 +150,27 @@ img { max-width: 100%; }
     background: #09211d80;
     border-radius: 13px;
     overflow: hidden;
-}
-.dashboard-metrics {
-    position: absolute;
-    top: 20px;
-    left: 15px;
-    width: 55%;
-    background: #071b1be8;
-    border: 1px solid #39554f;
-    border-radius: 8px;
-    z-index: 1;
-}
-.metric {
-    min-height: 62px;
-    padding: 12px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    border-bottom: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
 }
-.metric:last-child { border: 0; }
-.metric span { font-size: 10px; }
-.metric strong { display: block; font-size: 15px; }
-.metric b { font-size: 10px; color: var(--green); }
-.territory-map {
-    position: absolute;
-    width: 51%;
-    height: 78%;
-    right: -5%;
-    top: 2%;
+.dashboard-empty-state {
+    max-width: 280px;
 }
-.map-border {
-    fill: none;
-    stroke: #3d6553;
-    stroke-width: 1.6;
-    stroke-linejoin: round;
+.dashboard-empty-state h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+    color: var(--white);
 }
-.map-route {
-    fill: none;
-    stroke: var(--green);
-    stroke-width: 1.5;
+.dashboard-empty-state p {
+    font-size: 11px;
+    color: var(--soft-text);
+    line-height: 1.5;
+    margin: 0 0 16px;
 }
-.territory-map circle {
-    fill: var(--green);
-    filter: drop-shadow(0 0 5px var(--green));
-}
-.route-label {
-    position: absolute;
-    bottom: 26px;
-    right: 13%;
-    padding: 11px 16px;
-    border-radius: 8px;
-    border: 1px solid #3c6059;
-    background: #081c1c;
-    font-size: 12px;
-}
-.route-label small {
-    display: block;
-    color: var(--green);
-    margin-top: 6px;
-}
-.online-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    margin-right: 3px;
-}
-/* CAMBIAR POSICIÓN DE LA MUJER AQUÍ: left más negativo = más a la izquierda. */
 .hero-woman {
     position: absolute;
     z-index: 3;
@@ -268,25 +221,17 @@ img { max-width: 100%; }
     margin: 0;
 }
 
-/* 6. BODEGA Y DESCRIPCIÓN
-SOLO MODIFICA ESTOS VALORES PARA AJUSTAR ESTA SECCIÓN:
---bodega-ancho: proporción de la imagen frente al texto.
---bodega-alto: altura visual del recuadro de la imagen.
---panel-beneficios: color de fondo detrás del texto.
-*/
+/* 6. BODEGA Y DESCRIPCIÓN */
 .about {
     --bodega-ancho: 1.12fr;
     --bodega-alto: 285px;
     --panel-beneficios: rgba(4, 20, 19, 0.92);
-
     display: grid;
     grid-template-columns: minmax(0, var(--bodega-ancho)) minmax(0, 1fr);
     gap: 34px;
     align-items: center;
     padding-block: 3px 27px;
 }
-
-/* Recuadro que delimita la ilustración */
 .warehouse-card {
     position: relative;
     width: 100%;
@@ -297,8 +242,6 @@ SOLO MODIFICA ESTOS VALORES PARA AJUSTAR ESTA SECCIÓN:
     isolation: isolate;
     background: #091e1b;
 }
-
-/* Imagen: llena el recuadro sin estirarse ni distorsionarse */
 .warehouse-card > img {
     display: block;
     width: 100%;
@@ -306,9 +249,6 @@ SOLO MODIFICA ESTOS VALORES PARA AJUSTAR ESTA SECCIÓN:
     object-fit: cover;
     object-position: center;
 }
-
-/* BENEFICIOS: este es el nombre real de la clase del HTML.
-El panel oscuro mejora el contraste sobre el fondo de la bodega. */
 .warehouse-benefits {
     position: absolute;
     z-index: 2;
@@ -330,15 +270,12 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     line-height: 1.3;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
-
-/* Checks agregados con CSS; no dependen de la imagen */
 .warehouse-benefits span {
     display: flex;
     align-items: center;
     gap: 9px;
     white-space: nowrap;
 }
-
 .warehouse-benefits span::before {
     content: "✓";
     display: inline-grid;
@@ -352,11 +289,7 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     font-size: 12px;
     font-weight: 900;
 }
-
-/* Texto a la derecha de la imagen */
-.about-text {
-    min-width: 0;
-}
+.about-text { min-width: 0; }
 .about-text h2 {
     font-size: clamp(27px, 3vw, 38px);
     line-height: 1.13;
@@ -369,11 +302,9 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     color: #cbd7d5;
     margin: 0 0 20px;
 }
-.about-text .eyebrow {
-    margin-bottom: 15px;
-}
+.about-text .eyebrow { margin-bottom: 15px; }
 
-/* 7. MENSAJE DE CONFIANZA */
+/* 7. CONFIANZA Y FOOTER */
 .trust {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -391,8 +322,6 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     color: #cbd7d5;
     margin: 0;
 }
-
-/* 8. FOOTER */
 .site-footer { padding-top: 22px; }
 .footer-grid {
     display: grid;
@@ -420,16 +349,11 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     padding-block: 20px;
 }
 
-/* 9. TABLET */
+/* RESPONSIVE */
 @media (max-width: 1050px) {
     .container { width: min(100% - 40px, 1140px); }
-    .header-inner { gap: 15px; }
-    .main-nav { gap: 11px; }
-    .main-nav a { font-size: 10px; }
     .hero { grid-template-columns: 45% 55%; }
     .hero-woman { left: -4%; width: 45%; }
-    .service { padding-inline: 8px; gap: 7px; }
-    .service-icon { flex-basis: 36px; width: 36px; height: 36px; }
 }
 @media (max-width: 780px) {
     .header-inner { flex-wrap: wrap; padding-block: 12px; }
@@ -443,7 +367,7 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
         padding-block: 10px;
     }
     .main-nav.is-open { display: flex; }
-    .main-nav a { font-size: 13px; padding: 9px 0; }
+    .main-nav a { font-size: 14px; padding: 9px 0; }
     .header-actions { margin-left: auto; }
     .hero { display: block; padding-top: 40px; }
     .hero-visual { height: 420px; margin-top: 25px; }
@@ -455,43 +379,6 @@ El panel oscuro mejora el contraste sobre el fondo de la bodega. */
     }
     .service { border: 0; padding-inline: 0; }
     .about { grid-template-columns: 1fr; }
-    .warehouse-benefits { font-size: 12px; }
-    .about { --bodega-alto: 300px; }
     .trust { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* 10. TELÉFONOS */
-@media (max-width: 470px) {
-    .container { width: calc(100% - 30px); }
-    .logo { font-size: 20px; }
-    .header-actions .button-outline { display: none; }
-    .hero h1 { font-size: 37px; }
-    .hero-description { font-size: 12px; }
-    .hero-visual { height: 310px; }
-    .dashboard { height: 285px; width: 77%; }
-    .hero-woman { left: -2%; width: 48%; height: 98%; }
-    .dashboard-metrics { width: 60%; top: 10px; left: 8px; }
-    .metric { min-height: 46px; padding: 7px; }
-    .metric strong { font-size: 11px; }
-    .metric span, .metric b { font-size: 8px; }
-    .route-label { bottom: 16px; right: 8%; font-size: 10px; }
-    .statistics div { padding-inline: 13px; }
-    .service h2 { font-size: 11px; }
-    .service p { font-size: 9px; }
-    .about { --bodega-alto: 220px; }
-    .warehouse-benefits {
-        right: 8px;
-        max-width: 62%;
-        padding: 10px;
-        gap: 8px;
-        font-size: 9px;
-    }
-    .warehouse-benefits span::before {
-        width: 13px;
-        height: 13px;
-        flex-basis: 13px;
-        font-size: 10px;
-    }
-    .footer-grid { gap: 18px; }
 }

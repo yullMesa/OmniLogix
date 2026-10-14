@@ -6,8 +6,6 @@
     <meta name="theme-color" content="#071617">
     <meta name="description" content="OmniLogix: tecnología para logística inteligente.">
     <title>OmniLogix | Logística inteligente</title>
-
-    <!-- Archivos dentro del proyecto Frontend -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,137 +13,122 @@
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
+<!-- 1. MENÚ SUPERIOR -->
+<header class="site-header" id="inicio">
+    <div class="container header-inner">
+        <a href="#inicio" class="logo" aria-label="OmniLogix, inicio">
+            <span class="logo-symbol">∞</span> Omni<span class="accent">Logix</span>
+        </a>
+        <button class="menu-button" id="menuButton" type="button"
+                aria-label="Abrir menú" aria-controls="mainNav" aria-expanded="false">☰</button>
+        <nav class="main-nav" id="mainNav" aria-label="Menú principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#soluciones">Soluciones</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#confianza">Confianza</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="header-actions">
+            <a class="button button-outline button-small" href="pages/login.html">Iniciar sesión</a>
+            <a class="button button-primary button-small" href="pages/signUp.html">Registrarse →</a>
+        </div>
+    </div>
+</header>
 
-    <!-- 1. MENÚ SUPERIOR -->
-    <header class="site-header" id="inicio">
-        <div class="container header-inner">
-            <a href="#inicio" class="logo" aria-label="OmniLogix, inicio">
-                <span class="logo-symbol">∞</span> Omni<span class="accent">Logix</span>
-            </a>
-
-            <button class="menu-button" id="menuButton" type="button"
-                    aria-label="Abrir menú" aria-controls="mainNav" aria-expanded="false">☰</button>
-
-            <nav class="main-nav" id="mainNav" aria-label="Menú principal">
-                <a href="#inicio">Inicio</a>
-                <a href="#soluciones">Soluciones</a>
-                <a href="#beneficios">Beneficios</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#confianza">Confianza</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-
-            <div class="header-actions">
-                <!-- Sustituir la ruta cuando exista una página de autenticación -->
-                <a class="button button-outline button-small" href="pages/login.html">Iniciar sesión</a>
-                <a class="button button-primary button-small"
-                   href="pages/signUp.html">Registrarse →</a>
+<main>
+    <!-- 2. PORTADA -->
+    <section class="hero container" aria-labelledby="main-title">
+        <div class="hero-text">
+            <p class="eyebrow">LOGÍSTICA INTELIGENTE</p>
+            <h1 id="main-title">Tu operación,<br><span class="accent">en control total.</span></h1>
+            <p class="hero-description">
+                En OmniLogix conectamos tu negocio con soluciones logísticas integrales,
+                seguras y eficientes. Gestiona tus flotas, inventarios, contratos y
+                cumplimiento, todo desde una sola plataforma, diseñada para el mundo real.
+            </p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="#soluciones">Explora nuestras soluciones →</a>
+                <a class="button button-outline" href="#nosotros">Conoce más</a>
+            </div>
+            <!-- Métricas de valor inicial (Enfoque de lanzamiento real) -->
+            <div class="statistics">
+                <div><strong>100%</strong><small>Digital y en línea</small></div>
+                <div><strong>Ágil</strong><small>Sin fricción inicial</small></div>
+                <div><strong>24/7</strong><small>Disponibilidad</small></div>
             </div>
         </div>
-    </header>
 
-    <main>
-        <!-- 2. PORTADA: texto a la izquierda / mujer y tablero a la derecha -->
-        <section class="hero container" aria-labelledby="main-title">
-            <div class="hero-text">
-                <p class="eyebrow">LOGÍSTICA INTELIGENTE</p>
-                <h1 id="main-title">Tu operación,<br><span class="accent">en control total.</span></h1>
-                <p class="hero-description">
-                    En OmniLogix conectamos tu negocio con soluciones logísticas integrales,
-                    seguras y eficientes. Gestiona tus flotas, inventarios, contratos y
-                    cumplimiento, todo desde una sola plataforma, diseñada para el mundo real.
-                </p>
-                <div class="hero-actions">
-                    <a class="button button-primary" href="#soluciones">Explora nuestras soluciones →</a>
-                    <a class="button button-outline" href="#nosotros">Conoce más</a>
-                </div>
-                <!-- Cifras ilustrativas: sustituir por métricas verificadas -->
-                <div class="statistics">
-                    <div><strong>+500</strong><small>Empresas aliadas</small></div>
-                    <div><strong>99.8%</strong><small>Trazabilidad</small></div>
-                    <div><strong>24/7</strong><small>Soporte</small></div>
+        <div class="hero-visual">
+            <!-- Panel derecho: Estado inicial limpio sin métricas inventadas -->
+            <div class="dashboard">
+                <div class="dashboard-empty-state">
+                    <h3>Espacio de trabajo listo</h3>
+                    <p>Registra tu empresa para comenzar a visualizar flotas, inventarios y rutas en tiempo real.</p>
+                    <a class="button button-primary button-small" href="pages/signUp.html">Crear cuenta corporativa</a>
                 </div>
             </div>
-
-            <div class="hero-visual">
-                <!-- Panel decorativo de datos -->
-                <div class="dashboard">
-                    <div class="dashboard-metrics">
-                        <div class="metric"><span>Flota activa<strong>128</strong></span><b>↑ 12%</b></div>
-                        <div class="metric"><span>Inventario<strong>12.480</strong></span><b>↑ 15%</b></div>
-                        <div class="metric"><span>Contratos<strong>217</strong></span><b>↑ 8%</b></div>
-                    </div>
-
-                    <!-- Territorio ficticio, pensado para evocar un país sin representar uno real -->
-                    <svg class="territory-map" viewBox="0 0 220 260" aria-hidden="true">
-                        <path class="map-border" d="M100 11 L119 23 L139 19 L154 39 L175 43 L179 67 L197 76 L186 94 L207 112 L194 132 L207 146 L190 166 L194 184 L172 195 L162 220 L144 212 L127 245 L107 230 L91 244 L78 214 L60 205 L57 182 L35 168 L42 148 L21 128 L41 111 L33 88 L52 73 L53 53 L76 49 L84 29 Z"/>
-                        <path class="map-route" d="M64 83 Q106 111 125 126 T172 91 M125 126 L137 173 L168 190"/>
-                        <circle cx="125" cy="126" r="6"/><circle cx="172" cy="91" r="4"/>
-                        <circle cx="137" cy="173" r="4"/><circle cx="168" cy="190" r="3"/>
-                    </svg>
-                    <div class="route-label">Bogotá → Cali<small><span class="online-dot"></span> En ruta</small></div>
-                </div>
-
-                <!-- MUJER: ajustar left y width en la clase .hero-woman del CSS -->
-                <img class="hero-woman" src="assets/img/mujer.png"
-                     alt="Asesora de OmniLogix sosteniendo una tableta">
-            </div>
-        </section>
-
-        <!-- 3. SERVICIOS -->
-        <section class="services container" id="soluciones" aria-label="Soluciones OmniLogix">
-            <article class="service"><span class="service-icon">▣</span><div><h2>Seguimiento<br>en tiempo real</h2><p>Ubica y controla tus flotas al instante.</p></div></article>
-            <article class="service"><span class="service-icon">⬡</span><div><h2>Gestión de<br>inventarios</h2><p>Control total en bodegas y almacenes.</p></div></article>
-            <article class="service"><span class="service-icon">▤</span><div><h2>Contratos<br>digitales</h2><p>Administra y da seguimiento a tus acuerdos.</p></div></article>
-            <article class="service"><span class="service-icon">◇</span><div><h2>Cumplimiento<br>normativo</h2><p>Operación segura y sin contratiempos.</p></div></article>
-            <article class="service"><span class="service-icon">▥</span><div><h2>Reportes<br>inteligentes</h2><p>Decisiones basadas en datos reales.</p></div></article>
-        </section>
-
-        <!-- 4. SOBRE NOSOTROS: imagen encajada + texto en columna lateral -->
-        <section class="about container" id="nosotros">
-            <div class="warehouse-card" id="beneficios">
-                <!-- El PNG ya incluye el hombre, la bodega y cuatro checks sin texto -->
-                <img src="assets/img/hombre.png" alt="Trabajador revisando inventarios en una bodega">
-                <!-- Etiquetas alineadas junto a los cuatro checks dibujados en el PNG -->
-                <div class="warehouse-benefits" aria-label="Beneficios de OmniLogix">
-                    <span>En tiempo real</span>
-                    <span>Más eficiente</span>
-                    <span>Mayor seguridad</span>
-                    <span>Menos riesgos</span>
-                </div>
-            </div>
-            <div class="about-text">
-                <p class="eyebrow">SOBRE OMNILOGIX</p>
-                <h2>Tecnología que mueve el mundo <span class="accent">logístico</span></h2>
-                <p>Somos una empresa colombiana especializada en soluciones logísticas
-                    integrales. Combinamos tecnología, infraestructura y talento humano
-                    para ofrecer un servicio confiable, eficiente y adaptado a las
-                    necesidades de cada cliente.</p>
-                <a class="button button-primary" href="#contacto">Conoce más sobre nosotros →</a>
-            </div>
-        </section>
-
-        <!-- 5. MENSAJE DE CONFIANZA: sin logos de terceros -->
-        <section class="trust container" id="confianza">
-            <p class="eyebrow">COMPROMISO OMNILOGIX</p>
-            <div><h2>Tu logística está en <span class="accent">buenas manos.</span></h2>
-                <p>La confianza se construye en cada operación. Te acompañamos con tecnología,
-                    trazabilidad y soluciones diseñadas para darte control, seguridad y tranquilidad.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- 6. PIE DE PÁGINA -->
-    <footer class="site-footer" id="contacto">
-        <div class="container footer-grid">
-            <div><a href="#inicio" class="logo"><span class="logo-symbol">∞</span> Omni<span class="accent">Logix</span></a>
-                <p>Conectamos tu negocio,<br>movemos tus posibilidades.</p></div>
-            <div><h3>Enlaces rápidos</h3><a href="#inicio">Inicio</a><a href="#soluciones">Soluciones</a><a href="#beneficios">Beneficios</a><a href="#nosotros">Nosotros</a><a href="#confianza">Confianza</a></div>
-            <div><h3>Soluciones</h3><a href="#soluciones">Gestión de flotas</a><a href="#soluciones">Inventarios</a><a href="#soluciones">Contratos</a><a href="#soluciones">Reportes</a><a href="#soluciones">Cumplimiento</a></div>
-            <div><h3>Contacto</h3><p>Bogotá, Colombia</p><a href="mailto:info@omnilogix.com">info@omnilogix.com</a><a href="tel:+573001234567">+57 300 123 4567</a></div>
-            <div><h3>Síguenos</h3><p>Próximamente, nuestras redes sociales.</p></div>
+            <!-- Espacio reservado para la ilustración de la mujer -->
+            <img class="hero-woman" src="assets/img/mujer.png" alt="Asesora de OmniLogix con tableta">
         </div>
-        <div class="container footer-bottom">© 2026 OmniLogix. Todos los derechos reservados.</div>
-    </footer>
+    </section>
+
+    <!-- 3. SERVICIOS -->
+    <section class="services container" id="soluciones" aria-label="Soluciones OmniLogix">
+        <article class="service"><span class="service-icon">▣</span><div><h2>Seguimiento<br>en tiempo real</h2><p>Ubica y controla tus flotas al instante.</p></div></article>
+        <article class="service"><span class="service-icon">⬡</span><div><h2>Gestión de<br>inventarios</h2><p>Control total en bodegas y almacenes.</p></div></article>
+        <article class="service"><span class="service-icon">▤</span><div><h2>Contratos<br>digitales</h2><p>Administra y da seguimiento a tus acuerdos.</p></div></article>
+        <article class="service"><span class="service-icon">◇</span><div><h2>Cumplimiento<br>normativo</h2><p>Operación segura y sin contratiempos.</p></div></article>
+        <article class="service"><span class="service-icon">▥</span><div><h2>Reportes<br>inteligentes</h2><p>Decisiones basadas en datos reales.</p></div></article>
+    </section>
+
+    <!-- 4. SOBRE NOSOTROS -->
+    <section class="about container" id="nosotros">
+        <div class="warehouse-card" id="beneficios">
+            <!-- Espacio para la imagen del hombre en la bodega -->
+            <img src="assets/img/hombre.png" alt="Trabajador revisando inventarios en bodega">
+            <div class="warehouse-benefits" aria-label="Beneficios de OmniLogix">
+                <span>En tiempo real</span>
+                <span>Más eficiente</span>
+                <span>Mayor seguridad</span>
+                <span>Menos riesgos</span>
+            </div>
+        </div>
+        <div class="about-text">
+            <p class="eyebrow">SOBRE OMNILOGIX</p>
+            <h2>Tecnología que mueve el mundo <span class="accent">logístico</span></h2>
+            <p>Somos una empresa colombiana especializada en soluciones logísticas
+                integrales. Combinamos tecnología, infraestructura y talento humano
+                para ofrecer un servicio confiable, eficiente y adaptado a las
+                necesidades de cada cliente.</p>
+            <a class="button button-primary" href="#contacto">Conoce más sobre nosotros →</a>
+        </div>
+    </section>
+
+    <!-- 5. CONFIANZA -->
+    <section class="trust container" id="confianza">
+        <p class="eyebrow">COMPROMISO OMNILOGIX</p>
+        <div>
+            <h2>Tu logística está en <span class="accent">buenas manos.</span></h2>
+            <p>La confianza se construye en cada operación. Te acompañamos con tecnología,
+                trazabilidad y soluciones diseñadas para darte control, seguridad y tranquilidad.</p>
+        </div>
+    </section>
+</main>
+
+<!-- 6. PIE DE PÁGINA -->
+<footer class="site-footer" id="contacto">
+    <div class="container footer-grid">
+        <div>
+            <a href="#inicio" class="logo"><span class="logo-symbol">∞</span> Omni<span class="accent">Logix</span></a>
+            <p>Conectamos tu negocio,<br>movemos tus posibilidades.</p>
+        </div>
+        <div><h3>Enlaces rápidos</h3><a href="#inicio">Inicio</a><a href="#soluciones">Soluciones</a><a href="#beneficios">Beneficios</a><a href="#nosotros">Nosotros</a><a href="#confianza">Confianza</a></div>
+        <div><h3>Soluciones</h3><a href="#soluciones">Gestión de flotas</a><a href="#soluciones">Inventarios</a><a href="#soluciones">Contratos</a><a href="#soluciones">Reportes</a><a href="#soluciones">Cumplimiento</a></div>
+        <div><h3>Contacto</h3><p>Bogotá, Colombia</p><a href="mailto:info@omnilogix.com">info@omnilogix.com</a><a href="tel:+573001234567">+57 300 123 4567</a></div>
+        <div><h3>Síguenos</h3><p>Próximamente, nuestras redes sociales.</p></div>
+    </div>
+    <div class="container footer-bottom">© 2026 OmniLogix. Todos los derechos reservados.</div>
+</footer>
 </body>
 </html>
