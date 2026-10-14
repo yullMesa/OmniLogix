@@ -292,6 +292,115 @@ body.signup-body {
     outline: 2px solid var(--signup-green);
     outline-offset: 3px;
 }
+/* CENTRADO PERFECTO EN PANTALLA */
+.signup-body .signup-page {
+    min-height: 100vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: var(--signup-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* BOTÓN VOLVER AL INICIO */
+/* BOTÓN VOLVER AL INICIO (Destacado y visible) */
+.back-link {
+    align-self: flex-start;
+    color: var(--signup-green);
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--signup-border);
+    border-radius: 999px;
+    background: rgba(9, 30, 30, 0.6);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background: var(--signup-green);
+    color: #071617;
+    transform: translateX(-3px);
+    box-shadow: 0 0 12px rgba(186, 255, 54, 0.25);
+}
+
+/* ENLACES DE TÉRMINOS Y POLÍTICAS (Hiper-visibles e interactivos) */
+.terms-check span {
+    color: var(--signup-muted);
+}
+
+.terms-link {
+    color: var(--signup-green) !important;
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    cursor: pointer !important;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.terms-link:hover {
+    background: rgba(186, 255, 54, 0.15);
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(186, 255, 54, 0.6);
+}
+
+.back-link:hover {
+    color: var(--signup-green);
+}
+
+/* ENLACES Y NOTA DE SEGURIDAD */
+.terms-link {
+    color: var(--signup-green);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.security-note {
+    font-size: 11px;
+    color: var(--signup-green);
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/* MODAL SWEETALERT2 ESTILO NEÓN */
+.swal2-popup.swal-dark-theme {
+    background-color: #091e1e !important;
+    color: #f6f8f8 !important;
+    border: 1px solid #31524b !important;
+    border-radius: 16px !important;
+}
+
+.swal2-title {
+    color: #baff36 !important;
+    font-family: Inter, sans-serif !important;
+}
+
+.swal2-html-container {
+    color: #c6d4d0 !important;
+    text-align: left !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+.swal2-confirm.swal-btn-confirm {
+    background-color: #baff36 !important;
+    color: #071617 !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+}
 
 /* 10. PANTALLAS MEDIANAS: las dos tarjetas conservan buen ancho */
 @media (max-width: 1080px) {
