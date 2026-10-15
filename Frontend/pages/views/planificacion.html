@@ -1,0 +1,77 @@
+<div class="torre-control-container">
+
+    <!-- HEADER GENERAL EN UNA SOLA LÍNEA -->
+    <div class="torre-header">
+
+        <!-- Pestañas a la izquierda -->
+        <div class="torre-tabs">
+            <span class="torre-tab active" data-target="seccion-resumen">Resumen</span>
+            <span class="torre-tab" data-target="seccion-inventario">Inventario</span>
+            <span class="torre-tab" data-target="seccion-pedidos">Pedidos</span>
+            <span class="torre-tab" data-target="seccion-reabastecimiento">Reabastecimiento</span>
+            <span class="torre-tab" data-target="seccion-pronostico">Pronóstico</span>
+            <span class="torre-tab" data-target="seccion-escenarios">Escenarios</span>
+        </div>
+
+        <!-- Botones a la derecha del todo -->
+        <div class="torre-actions">
+            <button id="btnNuevoPedido" class="btn-primary-action">+ Nuevo pedido</button>
+        </div>
+
+    </div>
+
+    <!-- 1. SECCIÓN RESUMEN -->
+    <div id="seccion-resumen" class="torre-content">
+
+        <!-- Contenedor vacío: JavaScript inyectará las tarjetas de KPIs al recibir datos del backend -->
+        <div id="kpis-container" class="kpis-grid"></div>
+
+        <div class="torre-table-card">
+            <div class="torre-table-header">
+                <span class="torre-table-title">Inventario por ubicación</span>
+                <input type="text" id="filtroInventario" class="torre-search-input" placeholder="Filtrar por SKU o nombre...">
+            </div>
+            <div class="torre-table-container">
+                <table class="torre-table">
+                    <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Producto</th>
+                        <th>Bodega · Ubicación</th>
+                        <th>Disponible</th>
+                        <th>Reservado</th>
+                        <th>Cobertura</th>
+                        <th>Estado</th>
+                    </tr>
+                    </thead>
+                    <!-- Contenedor vacío: JavaScript inyectará las filas de PostgreSQL dinámicamente -->
+                    <tbody id="tabla-inventario-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SECCIÓN INVENTARIO -->
+    <div id="seccion-inventario" class="torre-content" style="display: none;">
+
+        <div class="inventario-subtabs">
+            <span class="inv-subtab active" data-inv-target="sub-catalogo">Catálogo</span>
+            <span class="inv-subtab" data-inv-target="sub-tablero">Tablero</span>
+            <span class="inv-subtab" data-inv-target="sub-movimientos">Movimientos</span>
+            <span class="inv-subtab" data-inv-target="sub-ubicaciones">Ubicaciones</span>
+            <span class="inv-subtab" data-inv-target="sub-lotes">Lotes</span>
+            <span class="inv-subtab" data-inv-target="sub-reportes">Reportes</span>
+        </div>
+
+        <div id="sub-catalogo" class="inv-subcontent">
+            <!-- Contenido del catálogo -->
+        </div>
+    </div>
+
+    <!-- 3, 4, 5, 6. OTRAS SECCIONES -->
+    <div id="seccion-pedidos" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Pedidos...</div></div>
+    <div id="seccion-reabastecimiento" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Reabastecimiento...</div></div>
+    <div id="seccion-pronostico" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Pronóstico...</div></div>
+    <div id="seccion-escenarios" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Escenarios...</div></div>
+
+</div>
