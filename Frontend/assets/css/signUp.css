@@ -62,10 +62,10 @@ body.signup-body {
     margin: 0 auto;
     display: grid;
     grid-template-columns:
-        minmax(0, var(--signup-left-size))
-        minmax(0, var(--signup-right-size));
+       minmax(0, var(--signup-left-size))
+       minmax(0, var(--signup-right-size));
     gap: var(--signup-gap);
-    align-items: stretch; /* Las dos tarjetas tienen la misma altura */
+    align-items: start; /* CORREGIDO: Evita que la columna izquierda se estire con los campos jurídicos */
 }
 
 .signup-body .signup-left,
@@ -375,33 +375,30 @@ body.signup-body {
     line-height: 1.4;
 }
 
-/* MODAL SWEETALERT2 ESTILO NEÓN */
-.swal2-popup.swal-dark-theme {
-    background-color: #091e1e !important;
-    color: #f6f8f8 !important;
-    border: 1px solid #31524b !important;
-    border-radius: 16px !important;
+/* Personalización temática de SweetAlert2 */
+.omni-swal-popup {
+    border: 1px solid #29403e !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
-.swal2-title {
-    color: #baff36 !important;
-    font-family: Inter, sans-serif !important;
-}
-
-.swal2-html-container {
-    color: #c6d4d0 !important;
-    text-align: left !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-}
-
-.swal2-confirm.swal-btn-confirm {
-    background-color: #baff36 !important;
+.omni-swal-btn {
     color: #071617 !important;
     font-weight: 700 !important;
-    border-radius: 999px !important;
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
 }
-
+/* Centrado perfecto para los textos y enlaces inferiores del formulario */
+.form-footer, .signup-bottom, .auth-footer, .terms-container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
 /* 10. PANTALLAS MEDIANAS: las dos tarjetas conservan buen ancho */
 @media (max-width: 1080px) {
     .signup-body .signup-layout {

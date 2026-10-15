@@ -123,7 +123,70 @@ button, input { font: inherit; }
 .signup-link { margin: 26px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
 .signup-link a { color: var(--green); font-weight: 700; }
 .login-footnote { margin: 0; padding-top: 16px; font-size: 11px; color: #849995; text-align: center; }
+/* ENVOLTORIO Y BOTÓN DE RETORNO EN LOGIN */
+.login-wrapper {
+    width: min(100%, var(--max-width));
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.back-link {
+    align-self: flex-start;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(10, 32, 31, 0.6);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background: var(--green);
+    color: #071617;
+    transform: translateX(-3px);
+    box-shadow: 0 0 12px rgba(186, 255, 54, 0.25);
+}
+
+/* ESTILOS DE LOS MODALES SWEETALERT2 PARA EL LOGIN */
+.swal2-popup.swal-dark-theme {
+    background-color: #0a201f !important;
+    color: #f6f8f8 !important;
+    border: 1px solid #2b4843 !important;
+    border-radius: 16px !important;
+}
+
+.swal2-title {
+    color: #baff36 !important;
+    font-family: Inter, sans-serif !important;
+}
+
+.swal2-html-container {
+    color: #bfd0cd !important;
+    text-align: left !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+.swal2-confirm.swal-btn-confirm {
+    background-color: #baff36 !important;
+    color: #071617 !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+}
 /* 7. RESPONSIVE */
 @media (max-width: 850px) {
     .login-page { padding: 20px 16px; }
