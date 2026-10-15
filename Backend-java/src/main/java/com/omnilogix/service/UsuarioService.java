@@ -30,4 +30,15 @@ public class UsuarioService {
         // Guardar en PostgreSQL (JPA maneja parámetros protegidos contra SQL Injection)
         return usuarioRepository.save(usuario);
     }
+    public Usuario autenticarUsuario(String identifier, String password) {
+        // Busca al usuario usando la nueva consulta optimizada
+        Usuario usuario = usuarioRepository.findByCorreoOrNombreUsuario(identifier)
+                .orElseThrow(() -> new RuntimeException("Credenciales inválidas. Usuario no encontrado."));
+
+        // Verifica si la contraseña coincide con el hash de BCrypt almacenado
+        if (!passwordEncoder.matches(password, usuario.getPassword())) {
+            throw new RuntimeException("Contraseña incorrecta.");
+        }
+        return usuario;
+    }
 }

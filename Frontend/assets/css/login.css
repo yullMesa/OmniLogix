@@ -1,9 +1,7 @@
 /* ==============================================================
-   OMNILOGIX — LOGIN
-   Archivo independiente: NO modifica styles.css ni signup.css.
-   Edita las variables de esta sección para cambiar tamaños.
-   ============================================================== */
-
+  OMNILOGIX — LOGIN
+  Archivo independiente: NO modifica styles.css ni signup.css.
+  ============================================================== */
 /* 1. VARIABLES Y REINICIO */
 :root {
     --background: #071617;
@@ -13,11 +11,10 @@
     --muted: #bfd0cd;
     --border: #2b4843;
     --max-width: 1180px;
-    --image-width: 0.92fr; /* Ancho relativo de la columna izquierda */
-    --form-width: 1.08fr;  /* Ancho relativo de la columna derecha */
-    --card-height: 670px; /* Altura del diseño en escritorio */
+    --image-width: 0.92fr;
+    --form-width: 1.08fr;
+    --card-height: 670px;
 }
-
 * { box-sizing: border-box; }
 html { font-family: 'Inter', Arial, sans-serif; }
 body { margin: 0; }
@@ -28,12 +25,20 @@ button, input { font: inherit; }
 .login-page {
     min-height: 100vh;
     padding: 32px 24px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: var(--white);
     background: radial-gradient(circle at 85% 20%, #143326, transparent 38%), var(--background);
 }
-
+.login-wrapper {
+    width: min(100%, var(--max-width));
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 .login-layout {
     width: min(100%, var(--max-width));
     display: grid;
@@ -42,7 +47,7 @@ button, input { font: inherit; }
     align-items: stretch;
 }
 
-/* 3. IMAGEN IZQUIERDA — COMPLETA Y SIN RECORTE */
+/* 3. IMAGEN IZQUIERDA */
 .login-illustration {
     min-width: 0;
     height: var(--card-height);
@@ -51,12 +56,11 @@ button, input { font: inherit; }
     border: 1px solid var(--border);
     background: #071a19;
 }
-
 .login-illustration img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Sin cortar el texto de la imagen */
+    object-fit: contain;
     object-position: center;
 }
 
@@ -71,11 +75,9 @@ button, input { font: inherit; }
     border-radius: 20px;
     background: rgba(7, 26, 25, 0.95);
 }
-
 .brand { display: inline-flex; align-items: center; align-self: flex-start; font-size: 26px; letter-spacing: -1.2px; font-weight: 800; }
 .brand-icon { font-size: 48px; color: var(--green); line-height: .7; margin-right: 9px; }
 .green { color: var(--green); }
-
 .login-content { width: 100%; max-width: 430px; margin: auto; padding-block: 45px; }
 .eyebrow { margin: 0 0 14px; font-size: 11px; letter-spacing: 2px; font-weight: 800; color: var(--green); }
 .login-content h1 { margin: 0 0 14px; font-size: clamp(33px, 3.5vw, 46px); letter-spacing: -1.7px; line-height: 1.12; }
@@ -123,21 +125,6 @@ button, input { font: inherit; }
 .signup-link { margin: 26px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
 .signup-link a { color: var(--green); font-weight: 700; }
 .login-footnote { margin: 0; padding-top: 16px; font-size: 11px; color: #849995; text-align: center; }
-/* ENVOLTORIO Y BOTÓN DE RETORNO EN LOGIN */
-.login-wrapper {
-    width: min(100%, var(--max-width));
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.login-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .back-link {
     align-self: flex-start;
     color: var(--green);
@@ -153,7 +140,6 @@ button, input { font: inherit; }
     transition: all 0.2s ease;
     text-decoration: none;
 }
-
 .back-link:hover {
     background: var(--green);
     color: #071617;
@@ -161,32 +147,43 @@ button, input { font: inherit; }
     box-shadow: 0 0 12px rgba(186, 255, 54, 0.25);
 }
 
-/* ESTILOS DE LOS MODALES SWEETALERT2 PARA EL LOGIN */
-.swal2-popup.swal-dark-theme {
-    background-color: #0a201f !important;
-    color: #f6f8f8 !important;
-    border: 1px solid #2b4843 !important;
-    border-radius: 16px !important;
+/* ==============================================================
+  ESTILOS ACTUALIZADOS Y MODERNOS PARA SWEETALERT2
+  ============================================================== */
+.omni-swal-popup {
+    background-color: var(--surface) !important;
+    color: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+    font-family: 'Inter', Arial, sans-serif !important;
 }
 
 .swal2-title {
-    color: #baff36 !important;
-    font-family: Inter, sans-serif !important;
+    color: var(--green) !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
 }
 
 .swal2-html-container {
-    color: #bfd0cd !important;
-    text-align: left !important;
-    font-size: 13px !important;
+    color: var(--muted) !important;
+    font-size: 14px !important;
     line-height: 1.6 !important;
 }
 
-.swal2-confirm.swal-btn-confirm {
-    background-color: #baff36 !important;
+.omni-swal-btn {
+    background-color: var(--green) !important;
     color: #071617 !important;
-    font-weight: 700 !important;
+    font-weight: 800 !important;
     border-radius: 999px !important;
+    padding: 12px 28px !important;
+    box-shadow: 0 4px 12px rgba(186, 255, 54, 0.3) !important;
 }
+
+.omni-swal-btn:hover {
+    filter: brightness(1.05);
+}
+
 /* 7. RESPONSIVE */
 @media (max-width: 850px) {
     .login-page { padding: 20px 16px; }
