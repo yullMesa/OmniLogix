@@ -214,15 +214,13 @@ function abrirMenuLateralInventario(nombreTitulo) {
         drawer.id = "drawerInventarioJira";
         drawer.className = "drawer-detalle";
 
-        // Agregamos una barra de agarre a la izquierda para redimensionar
         const resizer = document.createElement("div");
         resizer.id = "drawerResizer";
         resizer.style.cssText = "position: absolute; top: 0; left: 0; width: 6px; height: 100%; cursor: ew-resize; background: transparent; z-index: 101;";
         drawer.appendChild(resizer);
 
-        // Lógica para arrastrar y cambiar de tamaño
         let isResizing = false;
-        resizer.addEventListener("mousedown", (e) => {
+        resizer.addEventListener("mousedown", () => {
             isResizing = true;
             document.addEventListener("mousemove", handleMouseMove);
             document.addEventListener("mouseup", () => {
@@ -234,54 +232,256 @@ function abrirMenuLateralInventario(nombreTitulo) {
         function handleMouseMove(e) {
             if (!isResizing) return;
             const newWidth = window.innerWidth - e.clientX;
-            if (newWidth > 350 && newWidth < window.innerWidth - 100) {
+            if (newWidth > 480 && newWidth < window.innerWidth - 100) {
                 drawer.style.width = newWidth + "px";
             }
         }
-
         document.body.appendChild(drawer);
     }
 
-    // Contenido interno del drawer
-    // Buscamos o inyectamos el contenedor de contenido dentro del drawer para no pisar el resizer
     let contentContainer = document.getElementById("drawerContentInner");
     if (!contentContainer) {
         contentContainer = document.createElement("div");
         contentContainer.id = "drawerContentInner";
-        contentContainer.style.cssText = "padding: 30px; height: 100%; overflow-y: auto;";
+        contentContainer.style.cssText = "padding: 24px; height: 100%; display: flex; flex-direction: column; box-sizing: border-box;";
         drawer.appendChild(contentContainer);
     }
 
     contentContainer.innerHTML = `
-       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
-           <div>
-               <span style="font-size: 11px; color: var(--green); font-weight: 700; text-transform: uppercase;">Gestión de Inventario / Lote</span>
-               <h2 style="font-size: 20px; font-weight: 800; margin: 4px 0 0 0; color: var(--text);">${nombreTitulo}</h2>
-           </div>
-           <button id="cerrarDrawer" style="background: transparent; border: none; color: var(--muted); font-size: 18px; cursor: pointer;">✕</button>
-       </div>
-       
-       <div style="background: rgba(186,255,54,0.05); border: 1px solid var(--green); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
-           <h4 style="margin: 0 0 8px 0; color: var(--green); font-size: 14px;">🚀 Herramienta en Desarrollo</h4>
-           <p style="margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5;">
-               Próximamente esta herramienta avanzada de inventarios estará disponible. Podrás realizar control de stock en tiempo real, escaneo de códigos, asignación de ubicaciones físicas y auditorías por usuario.
-           </p>
-       </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 12px; flex-shrink: 0;">
+          <div>
+              <span style="font-size: 11px; color: var(--green); font-weight: 700; text-transform: uppercase;">Gestión de Inventario / Registro</span>
+              <h2 style="font-size: 20px; font-weight: 800; margin: 2px 0 0 0; color: var(--text);">Nuevo registro en: ${nombreTitulo}</h2>
+          </div>
+          <button id="cerrarDrawer" style="background: transparent; border: none; color: var(--muted); font-size: 18px; cursor: pointer;">✕</button>
+      </div>
 
-       <div style="font-size: 13px; color: var(--muted); margin-bottom: 10px;">Detalles del entorno:</div>
-       <div style="background: rgba(10, 32, 31, 0.5); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; display: flex; flex-direction: column; gap: 8px;">
-           <div><strong>Estado:</strong> Sincronizado con servidor</div>
-           <div><strong>Permisos:</strong> Dinámicos por Espacio de Trabajo</div>
-           <div><strong>Seguridad:</strong> Token UTC activo</div>
-       </div>
-   `;
+      <!-- Barra superior corregida (Espaciosa y con scroll elegante) -->
+      <div class="wizard-tabs-container" id="wizardTabs">
+          <button class="wizard-tab-btn active" data-section="sec-tipo">Tipo de ítem</button>
+          <button class="wizard-tab-btn" data-section="sec-general">Información general</button>
+          <button class="wizard-tab-btn" data-section="sec-disponibilidad">Disponibilidad</button>
+          <button class="wizard-tab-btn" data-section="sec-precios">Precios y costos</button>
+          <button class="wizard-tab-btn" data-section="sec-proveedor">Proveedor</button>
+          <button class="wizard-tab-btn" data-section="sec-logistica">Logística</button>
+          <button class="wizard-tab-btn" data-section="sec-trazabilidad">Trazabilidad</button>
+          <button class="wizard-tab-btn" data-section="sec-participantes">Participantes</button>
+      </div>
+
+      <!-- Contenedor con scroll vertical -->
+      <div class="form-sections-container" id="formSections">
+          
+          <!-- SECCIÓN 1: Tipo de ítem -->
+          <div id="sec-tipo" class="form-card-section">
+              <h3 class="form-card-title">Tipo de ítem</h3>
+              <p class="form-card-subtitle">Elige qué vas a registrar. Los campos se ajustan al tipo.</p>
+              <div class="item-type-grid">
+                  <div class="item-type-card selected" onclick="seleccionarTipoItem(this)">
+                      <strong style="color: var(--green); font-size: 13px;">📦 Producto físico</strong>
+                      <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--muted);">Mercancía con existencias, ubicación y movimiento en bodega.</p>
+                  </div>
+                  <div class="item-type-card" onclick="seleccionarTipoItem(this)">
+                      <strong style="color: var(--text); font-size: 13px;">💻 Producto digital / Infinito</strong>
+                      <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--muted);">Licencias, archivos o contenido descargable sin tope de stock.</p>
+                  </div>
+                  <div class="item-type-card" onclick="seleccionarTipoItem(this)">
+                      <strong style="color: var(--text); font-size: 13px;">🛠️ Servicio o Licencia</strong>
+                      <p style="margin: 4px 0 0 0; font-size: 12px; color: var(--muted);">Acceso recurrente, suscripciones o servicios logísticos con vigencia.</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- SECCIÓN 2: Información general + Imagen -->
+          <div id="sec-general" class="form-card-section">
+              <h3 class="form-card-title">Información general</h3>
+              <p class="form-card-subtitle">Datos de identificación y multimedia del ítem.</p>
+              
+              <div class="form-group">
+                  <label class="form-label">Imagen del producto</label>
+                  <div class="image-upload-box" onclick="document.getElementById('fileInputProd').click()">
+                      <span style="font-size: 22px;">📷</span>
+                      <p style="margin: 6px 0 2px 0; font-size: 12px; color: var(--text); font-weight: 600;">Haz clic para adjuntar imagen o arrástrala aquí</p>
+                      <span style="font-size: 11px; color: var(--muted);">PNG, JPG o WEBP (Máx. 5MB)</span>
+                      <input type="file" id="fileInputProd" style="display: none;" accept="image/*">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="form-label">Nombre del ítem *</label>
+                  <input type="text" class="form-input" placeholder="Ej. Estiba plástica reforzada...">
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Código interno / SKU *</label>
+                  <input type="text" class="form-input" value="INV-0101">
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Categoría *</label>
+                  <select class="form-select">
+                      <option>Selecciona una opción</option>
+                      <option>Empaques y Embalajes</option>
+                      <option>Tecnología y Licencias</option>
+                      <option>Materia Prima</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-textarea" rows="3" placeholder="Detalles operativos del producto..."></textarea>
+              </div>
+          </div>
+
+          <!-- SECCIÓN 3: Disponibilidad -->
+          <div id="sec-disponibilidad" class="form-card-section">
+              <h3 class="form-card-title">Disponibilidad e inventario</h3>
+              <p class="form-card-subtitle">Cómo se controla la existencia del ítem.</p>
+              <div class="form-group">
+                  <label class="form-label">Stock inicial</label>
+                  <input type="number" class="form-input" placeholder="0">
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Stock mínimo de alerta</label>
+                  <input type="number" class="form-input" placeholder="5">
+              </div>
+          </div>
+
+          <!-- SECCIÓN 4: Precios -->
+          <div id="sec-precios" class="form-card-section">
+              <h3 class="form-card-title">Precios y costos</h3>
+              <p class="form-card-subtitle">Valores comerciales y fiscales.</p>
+              <div class="form-group">
+                  <label class="form-label">Costo unitario</label>
+                  <input type="number" class="form-input" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Precio de venta</label>
+                  <input type="number" class="form-input" placeholder="0.00">
+              </div>
+          </div>
+
+          <!-- SECCIÓN 5: Proveedor -->
+          <div id="sec-proveedor" class="form-card-section">
+              <h3 class="form-card-title">Proveedor y origen</h3>
+              <p class="form-card-subtitle">De dónde proviene el ítem.</p>
+              <div class="form-group">
+                  <label class="form-label">Proveedor principal</label>
+                  <input type="text" class="form-input" placeholder="Nombre de la empresa o proveedor...">
+              </div>
+          </div>
+
+          <!-- SECCIÓN 6: Logística -->
+          <div id="sec-logistica" class="form-card-section">
+              <h3 class="form-card-title">Logística y almacenamiento</h3>
+              <p class="form-card-subtitle">Medidas y condiciones de manejo físico.</p>
+              <div class="form-group">
+                  <label class="form-label">Peso (kg)</label>
+                  <input type="number" class="form-input" placeholder="0.0">
+              </div>
+          </div>
+
+          <!-- SECCIÓN 7: Trazabilidad -->
+          <div id="sec-trazabilidad" class="form-card-section">
+              <h3 class="form-card-title">Cumplimiento y trazabilidad</h3>
+              <p class="form-card-subtitle">Información regulatoria y de calidad.</p>
+              <div class="form-group">
+                  <label class="form-label">País de origen</label>
+                  <input type="text" class="form-input" placeholder="Colombia">
+              </div>
+          </div>
+
+          <!-- SECCIÓN 8: PARTICIPANTES DINÁMICOS POR NÚMERO -->
+          <div id="sec-participantes" class="form-card-section">
+              <h3 class="form-card-title">Participantes y aforo en este stock</h3>
+              <p class="form-card-subtitle">Escribe la cantidad de personas que trabajarán en este stock para desplegar sus campos.</p>
+              
+              <div class="form-group" style="margin-bottom: 20px;">
+                  <label class="form-label" style="color: var(--green); font-size: 13px;">N° de participantes a asignar:</label>
+                  <input type="number" id="numParticipantes" class="form-input" value="1" min="1" max="20" style="width: 120px; font-weight: 700;">
+              </div>
+
+              <!-- Contenedor donde se generan los campos de correo y rol según el número indicado -->
+              <div id="contenedorFilasParticipantes"></div>
+          </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 14px; margin-top: auto; flex-shrink: 0;">
+          <span style="font-size: 12px; color: var(--muted);">Ficha completa: <strong>80%</strong></span>
+          <div style="display: flex; gap: 8px;">
+              <button class="btn-secondary-action" id="btnCerrarDrawerFooter" style="padding: 6px 14px; font-size: 12px;">Cancelar</button>
+              <button class="btn-primary-action" style="padding: 6px 16px; font-size: 12px;">Registrar ítem</button>
+          </div>
+      </div>
+  `;
 
     drawer.style.display = "block";
 
-    document.getElementById("cerrarDrawer").addEventListener("click", () => {
-        drawer.style.display = "none";
+    document.getElementById("cerrarDrawer").addEventListener("click", () => drawer.style.display = "none");
+    document.getElementById("btnCerrarDrawerFooter").addEventListener("click", () => drawer.style.display = "none");
+
+    // LÓGICA DINÁMICA DE PARTICIPANTES POR NÚMERO
+    const inputNum = drawer.querySelector("#numParticipantes");
+    const contenedorFilas = drawer.querySelector("#contenedorFilasParticipantes");
+
+    const renderizarFilasParticipantes = (cantidad) => {
+        contenedorFilas.innerHTML = "";
+        for (let i = 1; i <= cantidad; i++) {
+            const fila = document.createElement("div");
+            fila.className = "participante-fila";
+            fila.innerHTML = `
+               <span style="font-size: 12px; color: var(--green); font-weight: 700; min-width: 24px;">#${i}</span>
+               <input type="email" class="form-input" placeholder="correo.participante${i}@empresa.com" style="flex: 1;">
+               <select class="form-select" style="width: 160px;">
+                   <option value="RESPONSABLE">Responsable</option>
+                   <option value="LOGISTICA">Logística</option>
+                   <option value="OPERADOR">Operador</option>
+                   <option value="AUDITOR">Auditor</option>
+               </select>
+           `;
+            contenedorFilas.appendChild(fila);
+        }
+    };
+
+    // Renderizado inicial con 1 persona
+    renderizarFilasParticipantes(parseInt(inputNum.value) || 1);
+
+    // Al cambiar el número se actualizan los campos
+    inputNum.addEventListener("input", (e) => {
+        let val = parseInt(e.target.value);
+        if (isNaN(val) || val < 1) val = 1;
+        if (val > 20) val = 20;
+        renderizarFilasParticipantes(val);
+    });
+
+    // Sincronización de pestañas superiores con el scroll
+    const tabs = drawer.querySelectorAll(".wizard-tab-btn");
+    const container = drawer.querySelector("#formSections");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const targetId = tab.getAttribute("data-section");
+            const targetElement = drawer.querySelector(`#${targetId}`);
+            if (targetElement) {
+                container.scrollTo({
+                    top: targetElement.offsetTop - container.offsetTop,
+                    behavior: "smooth"
+                });
+            }
+        });
     });
 }
+
+// Función global auxiliar para seleccionar el tipo de ítem visualmente
+window.seleccionarTipoItem = function(cardElement) {
+    cardElement.parentElement.querySelectorAll(".item-type-card").forEach(c => {
+        c.classList.remove("selected");
+        c.querySelector("strong").style.color = "var(--text)";
+    });
+    cardElement.classList.add("selected");
+    cardElement.querySelector("strong").style.color = "var(--green)";
+};
 
 async function cargarDatosTorreControl() {
     const kpisContainer = document.getElementById("kpis-container");
