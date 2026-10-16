@@ -1,8 +1,6 @@
 <div class="torre-control-container">
-
     <!-- HEADER GENERAL EN UNA SOLA LÍNEA -->
     <div class="torre-header">
-
         <!-- Pestañas a la izquierda -->
         <div class="torre-tabs">
             <span class="torre-tab active" data-target="seccion-resumen">Resumen</span>
@@ -12,20 +10,15 @@
             <span class="torre-tab" data-target="seccion-pronostico">Pronóstico</span>
             <span class="torre-tab" data-target="seccion-escenarios">Escenarios</span>
         </div>
-
-        <!-- Botones a la derecha del todo -->
+        <!-- Botón corregido a la derecha -->
         <div class="torre-actions">
-            <button id="btnNuevoPedido" class="btn-primary-action">+ Nuevo pedido</button>
+            <button id="btnNuevoItem" class="btn-primary-action">+ Nuevo ítem</button>
         </div>
-
     </div>
 
     <!-- 1. SECCIÓN RESUMEN -->
     <div id="seccion-resumen" class="torre-content">
-
-        <!-- Contenedor vacío: JavaScript inyectará las tarjetas de KPIs al recibir datos del backend -->
         <div id="kpis-container" class="kpis-grid"></div>
-
         <div class="torre-table-card">
             <div class="torre-table-header">
                 <span class="torre-table-title">Inventario por ubicación</span>
@@ -44,16 +37,14 @@
                         <th>Estado</th>
                     </tr>
                     </thead>
-                    <!-- Contenedor vacío: JavaScript inyectará las filas de PostgreSQL dinámicamente -->
                     <tbody id="tabla-inventario-body"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- 2. SECCIÓN INVENTARIO -->
+    <!-- 2. SECCIÓN INVENTARIO (Aquí se inyectarán los bloques estilo Jira) -->
     <div id="seccion-inventario" class="torre-content" style="display: none;">
-
         <div class="inventario-subtabs">
             <span class="inv-subtab active" data-inv-target="sub-catalogo">Catálogo</span>
             <span class="inv-subtab" data-inv-target="sub-tablero">Tablero</span>
@@ -64,7 +55,22 @@
         </div>
 
         <div id="sub-catalogo" class="inv-subcontent">
-            <!-- Contenido del catálogo -->
+            <!-- Contenedor donde se agregarán dinámicamente los bloques estilo Jira -->
+            <div id="jira-blocks-container" style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- Bloque inicial de ejemplo -->
+                <div style="background: rgba(10, 32, 31, 0.7); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px;">
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <strong style="font-size: 14px;">Inventario General</strong>
+                            <span style="color: var(--muted); font-size: 12px;">(1 ítem activo)</span>
+                            <span style="background: rgba(186,255,54,0.15); color: var(--green); padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700;">Activo</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; color: var(--muted); padding: 20px; border: 1px dashed var(--border); border-radius: 8px; font-size: 13px;">
+                        El inventario está sincronizado con el servidor.
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -73,5 +79,4 @@
     <div id="seccion-reabastecimiento" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Reabastecimiento...</div></div>
     <div id="seccion-pronostico" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Pronóstico...</div></div>
     <div id="seccion-escenarios" class="torre-content" style="display: none;"><div class="kpi-card">Módulo de Escenarios...</div></div>
-
 </div>

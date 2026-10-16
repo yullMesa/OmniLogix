@@ -71,4 +71,6 @@ public class Usuario {
     public void setNitEmpresa(String nitEmpresa) { this.nitEmpresa = nitEmpresa; }
 
 
+
+
 }

@@ -56,17 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.ok) {
-                const usuarioLogueado = await response.json();
+                const datosSesion = await response.json(); // <-- Asegúrate de que se llame datosSesion
 
-                // Guardar datos básicos en sessionStorage para usarlos en el dashboard
-                sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuarioLogueado));
+                // Guardar datos en sessionStorage para usarlos en el dashboard
+                sessionStorage.setItem("authToken", datosSesion.tokenUnico);
+                sessionStorage.setItem("usuarioLogueado", JSON.stringify(datosSesion));
 
                 swalOmni.fire({
                     icon: 'success',
                     title: '¡Bienvenido de nuevo!',
                     text: `Acceso concedido. Redirigiendo al panel...`
                 }).then(() => {
-                    // Redirige estrictamente al dashboard
                     window.location.href = "dashboard.html";
                 });
             } else {
