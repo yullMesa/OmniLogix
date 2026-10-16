@@ -57,17 +57,30 @@
         <div id="sub-catalogo" class="inv-subcontent">
             <!-- Contenedor donde se agregarán dinámicamente los bloques estilo Jira -->
             <div id="jira-blocks-container" style="display: flex; flex-direction: column; gap: 20px;">
-                <!-- Bloque inicial de ejemplo -->
+                <!-- Bloque inicial de Inventario General con botón Crear y Gestionar -->
                 <div style="background: rgba(10, 32, 31, 0.7); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px;">
                         <div style="display: flex; gap: 12px; align-items: center;">
-                            <strong style="font-size: 14px;">Inventario General</strong>
-                            <span style="color: var(--muted); font-size: 12px;">(1 ítem activo)</span>
+                            <strong class="titulo-bloque-lote" style="font-size: 14px; color: var(--text); cursor: pointer;" title="Haz clic para gestionar">Inventario General</strong>
+                            <span class="contador-items" style="color: var(--muted); font-size: 12px;">(1 ítem activo)</span>
                             <span style="background: rgba(186,255,54,0.15); color: var(--green); padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700;">Activo</span>
                         </div>
+                        <button class="btn-secondary-action btn-gestionar-lote" style="padding: 4px 10px; font-size: 11px;">Gestionar módulo</button>
                     </div>
-                    <div style="text-align: center; color: var(--muted); padding: 20px; border: 1px dashed var(--border); border-radius: 8px; font-size: 13px;">
-                        El inventario está sincronizado con el servidor.
+
+                    <!-- Lista interna donde se muestran los ítems -->
+                    <div class="lista-items-internos" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; min-height: 40px; padding: 10px; border: 1px dashed var(--border); border-radius: 8px;">
+                        <div style="background: rgba(7, 26, 25, 0.8); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 12px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text); font-weight: 500;">✓ Dale +crear para que empieces a manejar tu logistica.</span>
+                            <span style="color: var(--green); font-size: 11px; font-weight: 600;">Activo</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón pequeño para crear dentro de Inventario General -->
+                    <div>
+                        <button class="btn-agregar-item-interno" style="background: transparent; border: none; color: var(--green); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 4px 0;">
+                            + Crear
+                        </button>
                     </div>
                 </div>
             </div>
